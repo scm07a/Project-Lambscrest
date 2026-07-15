@@ -1,0 +1,131 @@
+# -------------------------
+# OS Files
+# -------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.md
+
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.nfs*
+
+# -------------------------
+# IDE / Editor Files
+# -------------------------
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (PyCharm, CLion, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# -------------------------
+# Language-specific
+# -------------------------
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+*.egg-info/
+dist/
+build/
+
+# C / C++
+*.exe
+*.out
+*.o
+*.obj
+*.so
+*.dll
+*.a
+*.txt
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# Node.js / JavaScript
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+*.tsbuildinfo
+
+# Go
+*.exe
+*.test
+*.out
+
+# Rust
+/target/
+**/*.rs.bk
+
+# -------------------------
+# Package Managers & Config
+# -------------------------
+# Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Node
+package-lock.json
+yarn.lock
+
+# -------------------------
+# Sensitive / Private Files
+# -------------------------
+# Environment variables
+.env
+.env.local
+.env.*.local
+credentials.json
+*.pem
+*.key
+
+# API keys / Secrets
+*.secret
+secrets.json
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+logs/
+*.trace
+
+# -------------------------
+# Temporary / Cache
+# -------------------------
+tmp/
+temp/
+.cache/
+*.swp
+*.swo
