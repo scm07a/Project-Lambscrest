@@ -23,7 +23,7 @@ void Player::update(double dt){
     rect.y=static_cast<int>(y);
 }
 
-void Player::render(SDL_Renderer* renderer){
-    SDL_SetRenderDrawColor(renderer,255,255,255,255);
-    SDL_RenderFillRect(renderer,&rect);
+void Player::render(SDL_Renderer* renderer,
+                    SDL_Texture* texture){
+    SDL_RenderCopy(renderer,texture,nullptr,&rect);
 }

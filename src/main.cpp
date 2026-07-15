@@ -1,5 +1,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <stdexcept>
+#include <Game.h>
 #include "Player.h"
         //* To Be Used In Rendering Textures
 int main(int argc, char* argv[]){
@@ -39,8 +41,11 @@ int main(int argc, char* argv[]){
     while (isRunning){
         //* Get The Time In Secs Of How Many Ticks Happened
         Uint64 currentTick = SDL_GetPerformanceCounter();
-        double deltaTime = static_cast<double>(currentTick - lastTick)/
-                            static_cast<double>(SDL_GetPerformanceFrequency());//* Return Time In Seconds
+        double deltaTime = static_cast<double>
+                            (currentTick-lastTick)/
+                            static_cast<double>
+                            (SDL_GetPerformanceFrequency());
+                            //* Return Time In Seconds
         lastTick=currentTick;
         //*Handles Exiting The Application
         while(SDL_PollEvent(&exit_X))

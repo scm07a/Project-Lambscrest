@@ -8,12 +8,13 @@ private:
     float x;
     float y;
     float speed = 400.f;
-    SDL_Rect rect;
     int health = 100;
     bool isAlive = true;
+    SDL_Rect rect;
 public:
     Player();
     void handleInput(const Uint8* keyboardState);
     void update(double dt);
-    void render(SDL_Renderer* renderer);
+    void render(SDL_Renderer* renderer,
+                SDL_Texture* texture);
 };
