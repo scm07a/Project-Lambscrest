@@ -1,11 +1,12 @@
 #include "Player.h"
+#include <SDL2/SDL.h>
 
 Player::Player(): x(100.f),y(100.f){
     rect.w=200;
     rect.h=150;
     rect.x=static_cast<int>(x);
     rect.y=static_cast<int>(y);
-}
+}   
 
 void Player::handleInput(const Uint8* keyboardState){
     moveX=0.f;

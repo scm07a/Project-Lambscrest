@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(TerrariaClone LANGUAGES CXX)
+project(ProjectLambscrest LANGUAGES CXX)
 
 # ==========================
 # C++ Standard
