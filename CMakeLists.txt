@@ -52,6 +52,7 @@ file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS
 add_executable(${PROJECT_NAME}
     ${SOURCES}
     ${HEADERS}
+    resources/icons/icon.rc
 )
 # ==========================
 # Copy Assets
