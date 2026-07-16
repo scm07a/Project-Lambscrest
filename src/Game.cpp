@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <SDL2/SDL.h>
 #include "Game.h"
+#include "TextureManager.h"
 
 Game::Game():window(nullptr),
             renderer(nullptr),
@@ -44,37 +45,48 @@ Game::~Game(){
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
+double Game::calcSpeed(Uint64& lastTick){
+    Uint64 currentTick = SDL_GetPerformanceCounter();
+    double deltaTime = static_cast<double>
+                        (currentTick-lastTick)/
+                        static_cast<double>(
+                        SDL_GetPerformanceFrequency());
+    lastTick=currentTick;
+    return deltaTime;
+}
+
+bool Game::eventhandler(){
+    SDL_Event event;
+    while (SDL_PollEvent(&event))
+        if(event.type== SDL_QUIT) return false;
+    return true;
+}
+
+void Game::processInput(double dt){
+    const Uint8* keyboardState = 
+                SDL_GetKeyboardState(nullptr);
+        
+        player.handleInput(keyboardState);
+        player.update(dt);
+}
+
+void Game::render(TextureManager& tm){
+    SDL_SetRenderDrawColor(renderer,0,0,0,255);
+    SDL_RenderClear(renderer);
+    player.render(renderer,tm.getTexture("player"));
+    SDL_RenderPresent(renderer);
+}
 
 bool Game::run(){
-    SDL_Event event;
+    tm.loadTexture(renderer,"player","assets/textures/Player/Woodcutter.png");
     //*Get Last Tick
     Uint64 lastTick = SDL_GetPerformanceCounter();
 
     while(isRunning){
-        //* Get Current Running Tick
-        Uint64 currentTick = SDL_GetPerformanceCounter();
-        double deltaTime = static_cast<double>
-                            (currentTick-lastTick)/
-                            static_cast<double>(
-                            SDL_GetPerformanceFrequency());
-        lastTick=currentTick;
-
-        while(SDL_PollEvent(&event)){
-            if(event.type == SDL_QUIT)
-                isRunning=false;
-        }
-
-        const Uint8* keyboardState =
-                SDL_GetKeyboardState(nullptr);
-        
-        player.handleInput(keyboardState);
-        player.update(deltaTime);
-        SDL_SetRenderDrawColor(renderer,
-                                0,0,0,255);
-        SDL_RenderClear(renderer);
-        //* playerTexture to be defined later
-        player.render(renderer,nullptr);
-        SDL_RenderPresent(renderer);
+        double deltaTime= calcSpeed(lastTick);
+        if(!eventhandler()) isRunning=false;
+        processInput(deltaTime);
+        render(tm);
     }
     return true;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include "Player.h"
+#include "TextureManager.h"
 
 class Game{
     private:
@@ -8,8 +9,13 @@ class Game{
         SDL_Renderer* renderer;
         bool isRunning;
         Player player;
+        TextureManager tm;
     public:
         Game();
         ~Game();
+        double calcSpeed(Uint64& lastTick);
+        bool eventhandler();
+        void processInput(double dt);
+        void render(TextureManager& tm);
         bool run();
 };
