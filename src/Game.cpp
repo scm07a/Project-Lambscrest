@@ -1,8 +1,6 @@
 #include <iostream>
 #include <stdexcept>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include "Player.h"
 #include "Game.h"
 
 Game::Game():window(nullptr),
@@ -49,7 +47,6 @@ Game::~Game(){
 
 bool Game::run(){
     SDL_Event event;
-    Player player;
     //*Get Last Tick
     Uint64 lastTick = SDL_GetPerformanceCounter();
 
