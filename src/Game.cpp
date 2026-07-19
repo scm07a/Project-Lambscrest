@@ -72,17 +72,14 @@ void Game::processInput(double dt){
 
 void Game::render(TextureManager& tm){
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer,
-                    tm.getTexture("background"),
-                    nullptr,
-                    nullptr);
+    SDL_SetRenderDrawColor(renderer,0,0,0,255);
     player.render(renderer,tm.getTexture("player"));
     SDL_RenderPresent(renderer);
 }
 
 bool Game::run(){
-    tm.loadTexture(renderer,"player","assets/textures/Player/Woodcutter.png");
-    tm.loadTexture(renderer,"background","assets/textures/backgrounds/1.png");
+    tm.loadTexture(renderer,"player","assets/textures/characters/player.png");
+    // tm.loadTexture(renderer,"background","assets/textures/backgrounds/origbig.png");
     Uint64 lastTick = SDL_GetPerformanceCounter();
 
     while(isRunning){

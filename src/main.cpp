@@ -12,5 +12,4 @@ int main(){
         std::cerr<<e.what()<<std::endl;
         return 1;
     }
-    return 0;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include "World.h"
 #include "Player.h"
 #include "TextureManager.h"
 
@@ -9,6 +10,7 @@ class Game{
         SDL_Renderer* renderer;
         bool isRunning;
         Player player;
+        World world;
         TextureManager tm;
     public:
         Game();
