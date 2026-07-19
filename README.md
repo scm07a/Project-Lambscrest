@@ -130,8 +130,8 @@ This project serves as a practical way to improve my understanding of:
 - [x] Delta time implementation
 - [x] Player class
 - [x] Input handling
-- [ ] Texture loading
-- [ ] Sprite rendering
+- [x] Texture loading
+- [x] Sprite rendering
 - [ ] Animation system
 - [ ] Camera
 - [ ] Tile map
