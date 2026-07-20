@@ -1,11 +1,18 @@
 #include "Player.h"
 #include <SDL2/SDL.h>
 
-Player::Player(): x(100.f),y(100.f){
-    rect.w=200;
-    rect.h=150;
-    rect.x=static_cast<int>(x);
-    rect.y=static_cast<int>(y);
+Player::Player(): x(100.f),y(100.f),
+                currentRow(0),currentColumn(0),
+                animtimer(0.0)
+{
+    dstrect.w=200;
+    dstrect.h=150;
+    dstrect.x=static_cast<int>(x);
+    dstrect.y=static_cast<int>(y);
+    srcrect.w=48;
+    srcrect.h=48;
+    srcrect.x= currentColumn * 48;
+    srcrect.y= currentRow * 48;
 }   
 
 void Player::handleInput(const Uint8* keyboardState){
@@ -20,11 +27,15 @@ void Player::handleInput(const Uint8* keyboardState){
 void Player::update(double dt){
     x+=moveX*speed*dt;
     y+=moveY*speed*dt;
-    rect.x=static_cast<int>(x);
-    rect.y=static_cast<int>(y);
+    dstrect.x=static_cast<int>(x);
+    dstrect.y=static_cast<int>(y);
 }
 
 void Player::render(SDL_Renderer* renderer,
                     SDL_Texture* texture){
-    SDL_RenderCopy(renderer,texture,nullptr,&rect);
+    SDL_RenderCopy(renderer,texture,&srcrect,&dstrect);
+}
+
+void Player::updateanim(double dt){
+
 }
