@@ -37,5 +37,11 @@ void Player::render(SDL_Renderer* renderer,
 }
 
 void Player::updateanim(double dt){
-
+    animtimer+=dt;
+    if(animtimer>0.2){
+        currentColumn=(currentColumn+1)%3;
+        srcrect.x=currentColumn*48;
+        srcrect.y=currentRow*48;
+        animtimer-=0.2;
+    }
 }

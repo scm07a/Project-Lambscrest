@@ -19,7 +19,8 @@ Game::Game():window(nullptr),
                             SDL_WINDOWPOS_CENTERED,
                             1280,
                             720,
-                            SDL_WINDOW_SHOWN);
+                            SDL_WINDOW_RESIZABLE);
+
 
     if(!window){
         throw std::runtime_error(
@@ -58,16 +59,17 @@ double Game::calcSpeed(Uint64& lastTick){
 bool Game::eventhandler(){
     SDL_Event event;
     while (SDL_PollEvent(&event))
-        if(event.type== SDL_QUIT) return false;
+        if(event.type==SDL_QUIT) return false;
     return true;
 }
 
 void Game::processInput(double dt){
     const Uint8* keyboardState = 
-                SDL_GetKeyboardState(nullptr);
+        SDL_GetKeyboardState(nullptr);
         
-        player.handleInput(keyboardState);
-        player.update(dt);
+    player.handleInput(keyboardState);
+    player.update(dt);
+    player.updateanim(dt);
 }
 
 void Game::render(TextureManager& tm){
